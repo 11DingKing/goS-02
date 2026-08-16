@@ -138,7 +138,7 @@ func (s *TerminalService) SyncOffline(ctx context.Context, terminalID string) (*
 		return nil, err
 	}
 
-	clockIns := make([]domain.ClockIn, 0, len(term.PendingClockIns))
+	clockIns := make([]domain.ClockIn, len(term.PendingClockIns))
 	copy(clockIns, term.PendingClockIns)
 	sort.Slice(clockIns, func(i, j int) bool {
 		return clockIns[i].Timestamp.Before(clockIns[j].Timestamp)
